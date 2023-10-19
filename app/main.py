@@ -9,11 +9,15 @@ def main():
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
     server_socket.accept()
 
-    (conn, address) = server_socket.accept()
-    data = conn.recv(1024)
-    print(data)
-    conn.send(_HTTP_200_RESP)
-    conn.close()
+    # (conn, _) = server_socket.accept()
+    # data = conn.recv(1024)
+    # print(data)
+    # conn.send(_HTTP_200_RESP)
+    # conn.close()
+
+    with server_socket:
+        conn, _ = server_socket.accept()  # wait for client
+        conn.send("HTTP/1.1 200 OK\r\n\r\n".encode())
 
 
 if __name__ == "__main__":
