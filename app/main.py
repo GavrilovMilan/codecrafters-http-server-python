@@ -18,7 +18,7 @@ def main():
     elif path.split('/')[1] == 'user-agent':
         agent = data.split('\r\n')[2].split()[1]
         print(agent)
-        conn.send((HTTP_200 + 'Content-Type: text/plain\r\n' + f'Content-Length: {len(string)}\r\n\r\n' + agent).encode())
+        conn.send((HTTP_200 + 'Content-Type: text/plain\r\n' + f'Content-Length: {len(agent)}\r\n\r\n' + agent).encode())
     else:
         conn.send(HTTP_404.encode())
 
