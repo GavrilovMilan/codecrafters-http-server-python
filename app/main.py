@@ -16,6 +16,8 @@ def main():
         conn.send((HTTP_200 + '\r\n').encode())
     elif path.split('/')[1] == 'echo':
         conn.send((HTTP_200 + 'Content-Type: text/plain\r\n' + f'Content-Length: {len(string)}\r\n\r\n' + string).encode())
+    elif path.split('/')[1] == 'user-agent':
+        conn.send((HTTP_200 + 'Content-Type: text/plain\r\n' + f'Content-Length: {len(string)}\r\n\r\n' + string).encode())
     else:
         conn.send(HTTP_404.encode())
 
