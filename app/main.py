@@ -28,7 +28,7 @@ def main():
 
     while True:
         conn, addr = server_socket.accept()
-        t = threading.Thread(target=handle_request, args=(conn))
+        t = threading.Thread(target=handle_request, args=(conn,))
         t.start()
 
 
