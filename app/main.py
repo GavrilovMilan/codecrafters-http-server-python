@@ -10,8 +10,7 @@ def main():
     data = conn.recv(1024).decode()
     path = data.split()[1]
     string = ''.join(path[6:])
-    print(path)
-    print(string)
+    print(data)
     if path == '/':
         conn.send((HTTP_200 + '\r\n').encode())
     elif path.split('/')[1] == 'echo':
