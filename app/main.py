@@ -9,8 +9,8 @@ def main():
     # server_socket.accept()
 
     conn, addr = server_socket.accept()
-    data = conn.recv(1024)
-    print(data)
+    data = conn.recv(1024).decode()
+    print(data)  # b'GET / HTTP/1.1\r\nHost: localhost:4221\r\nUser-Agent: Go-http-client/1.1\r\nAccept-Encoding: gzip\r\n\r\n'
 
     conn.send("HTTP/1.1 200 OK\r\n\r\n".encode())
 
