@@ -9,7 +9,7 @@ def main():
     conn, addr = server_socket.accept()
     data = conn.recv(1024).decode()
     path = data.split()[1]
-    string = ''.join(path.split('/')[2:])
+    string = ''.join(path[5:])
     print(path)
     print(string)
     if path == '/':
