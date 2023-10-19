@@ -9,12 +9,12 @@ def main():
     conn, addr = server_socket.accept()
     data = conn.recv(1024).decode()
     path = data.split()[1]
-    string = path.split('/')[-1]
+    string = path.split('/')[1:-1]
     print(path)
     print(string)
     if path == '/':
         conn.send(HTTP_200.encode())
-    elif path.split('/')[1] == 'echo':#asd
+    elif path.split('/')[1] == 'echo':
         conn.send((HTTP_200 + 'Content-Type: text/plain/r/n' + f'Content-Length: {len(string)}/r/n/r/n' + string).encode())
     else:
         conn.send(HTTP_404.encode())
