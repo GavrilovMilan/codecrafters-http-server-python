@@ -1,7 +1,7 @@
 import socket
 
 
-HTTP_200 = "HTTP/1.1 200 OK\r\n\r\n"
+HTTP_200 = "HTTP/1.1 200 OK\r\n"
 HTTP_404 = "HTTP/1.1 404 Not Found\r\n\r\n"
 def main():
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
