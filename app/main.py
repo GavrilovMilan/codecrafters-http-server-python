@@ -22,6 +22,7 @@ def handle_request(conn):
             (HTTP_200 + 'Content-Type: text/plain\r\n' + f'Content-Length: {len(agent)}\r\n\r\n' + agent).encode())
     else:
         conn.send(HTTP_404.encode())
+    conn.close()
 
 def main():
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
