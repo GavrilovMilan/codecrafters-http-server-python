@@ -8,9 +8,11 @@ def main():
 
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
     server_socket.accept()
-
+    print('Stage 1 Zavrsen')
     (conn, address) = server_socket.accept()
+    print('1')
     data = conn.recv(1024)
+    print('2')
     print(data)
     conn.send(_HTTP_200_RESP)
     conn.close()
