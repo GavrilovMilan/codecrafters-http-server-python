@@ -10,11 +10,18 @@ def main():
     server_socket.accept()
 
     server_socket.listen(5)
-    (conn, _) = server_socket.accept()
+    conn, addr = server_socket.accept()  # wait for client
     data = conn.recv(1024)
-    print(data)
-    conn.send(_HTTP_200_RESP)
-    conn.close()
+    print(data.decode("utf-8"))
+    conn.sendall(bytes("HTTP/1.1 200 OK\r\n\r\n", "utf-8"))
+    server_socket.close()
+
+    # server_socket.listen(5)
+    # (conn, _) = server_socket.accept()
+    # data = conn.recv(1024)
+    # print(data)
+    # conn.send(_HTTP_200_RESP)
+    # conn.close()
 
     # with server_socket:
     #     conn, _ = server_socket.accept()  # wait for client
