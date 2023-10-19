@@ -9,7 +9,7 @@ def main():
     conn, addr = server_socket.accept()
     data = conn.recv(1024).decode()
     path = data.split()[1]
-    string = path.split('/')[1]
+    string = path.split('/')[-1]
     print(string)
     if path == '/':
         conn.send(HTTP_200)
