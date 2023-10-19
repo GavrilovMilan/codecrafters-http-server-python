@@ -15,7 +15,8 @@ def main():
     if path == '/':
         conn.send(HTTP_200)
     elif path.split('/')[1] == 'echo':
-        conn.send(HTTP_200, string.encode())
+        conn.send(HTTP_200)
+        conn.send(string.encode())
     else:
         conn.send(HTTP_404)
 
