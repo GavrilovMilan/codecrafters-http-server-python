@@ -8,7 +8,7 @@ def main():
 
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
     server_socket.accept()
-
+    print("ZASTO NE RADI")
     server_socket.listen(5)
     conn, addr = server_socket.accept()  # wait for client
     data = conn.recv(1024)
