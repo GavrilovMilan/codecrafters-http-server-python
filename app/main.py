@@ -14,7 +14,7 @@ def main():
     print(string)
     if path == '/':
         conn.send(HTTP_200.encode())
-    elif path.split('/')[1] == 'echo':
+    elif path.split('/')[1] == 'echo':#asd
         conn.send((HTTP_200 + 'Content-Type: text/plain/r/n' + f'Content-Length: {len(string)}/r/n/r/n' + string).encode())
     else:
         conn.send(HTTP_404)
