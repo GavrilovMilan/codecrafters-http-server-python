@@ -10,7 +10,11 @@ def main():
 
     conn, addr = server_socket.accept()
     data = conn.recv(1024)
-    conn.sendall("HTTP/1.1 200 OK\r\n\r\n".encode())
+    print(data)
+
+    conn.send("HTTP/1.1 200 OK\r\n\r\n".encode())
+
+
     server_socket.close()
 
 if __name__ == "__main__":
