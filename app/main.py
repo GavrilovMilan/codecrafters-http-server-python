@@ -15,6 +15,8 @@ def main():
         conn.send(HTTP_200)
     elif path.split('/')[0] == 'echo':
         conn.send(HTTP_200, string.encode())
+    else:
+        conn.send(HTTP_404)
 
     server_socket.close()
 
