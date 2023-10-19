@@ -9,10 +9,9 @@ def main():
     server_socket.accept()
 
     with server_socket:
-        conn, address = server_socket.accept()
+        (conn, address) = server_socket.accept()
         data = conn.recv(1024)
         conn.send('HTTP/1.1 200 OK\r\n\r\n'.encode())
-        conn.close()
 
 
 if __name__ == "__main__":
