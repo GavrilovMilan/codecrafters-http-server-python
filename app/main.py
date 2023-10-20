@@ -4,7 +4,7 @@ import os
 import sys
 
 HTTP_200 = "HTTP/1.1 200 OK\r\n"
-HTTP_201 = "HTTP/1.1 201 Created\r\n"
+HTTP_201 = "HTTP/1.1 201 Created\r\n\r\n"
 HTTP_404 = "HTTP/1.1 404 Not Found\r\n\r\n"
 
 
@@ -46,7 +46,7 @@ def handle_request(conn):
                 f.write(content)
                 conn.send(HTTP_201.encode())
         else:
-            print("AAAAAAA")
+            conn.send(HTTP_404.encode())
 def main():
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
 
