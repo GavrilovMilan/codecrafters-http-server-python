@@ -40,7 +40,7 @@ def handle_request(conn):
         if path.split('/')[1] == 'files':
             filename = path.split('/')[2]
             dir = sys.argv[-1]
-            content = path.split('\r\n')[-1]
+            content = data.split('\r\n')[-1]
             filePath = dir + filename
             print(filePath)
             print(content)
