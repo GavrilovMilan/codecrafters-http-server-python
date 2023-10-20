@@ -1,5 +1,7 @@
 import socket
 import threading
+import os
+import sys
 
 
 HTTP_200 = "HTTP/1.1 200 OK\r\n"
@@ -18,11 +20,14 @@ def handle_request(conn):
     elif path.split('/')[1] == 'user-agent':
         agent = data.split('\r\n')[2].split()[1]
         # print(agent)
-        conn.send(
-            (HTTP_200 + 'Content-Type: text/plain\r\n' + f'Content-Length: {len(agent)}\r\n\r\n' + agent).encode())
+        conn.send((HTTP_200 + 'Content-Type: text/plain\r\n' + f'Content-Length: {len(agent)}\r\n\r\n' + agent).encode())
     elif path.split('/')[1] == 'files':
         filename = path.split('/')[2]
-
+        dir = sys.argv[-1]
+        if filename in dir:
+            conn.send((HTTP_200 + 'Content-Type: application/octet-stream\r\n').encode())
+        else:
+            conn.send(HTTP_404.encode())
     else:
         conn.send(HTTP_404.encode())
     conn.close()
