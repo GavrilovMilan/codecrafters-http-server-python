@@ -37,6 +37,7 @@ def handle_request(conn):
             conn.send(HTTP_404.encode())
         conn.close()
     elif data.split()[0] == 'POST':
+        print("AAAAAAA")
         if path.split('/')[1] == 'files':
             filename = path.split('/')[2]
             dir = sys.argv[-1]
