@@ -42,6 +42,8 @@ def handle_request(conn):
             dir = sys.argv[-1]
             content = path.split('\r\n')[-1]
             filePath = dir + filename
+            print(filePath)
+            print(content)
             with open(filePath, 'w') as f:
                 f.write(content)
                 conn.send(HTTP_201.encode())
