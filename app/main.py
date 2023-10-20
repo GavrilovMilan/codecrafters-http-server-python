@@ -37,7 +37,6 @@ def handle_request(conn):
             conn.send(HTTP_404.encode())
         conn.close()
     elif data.split()[0] == 'POST':
-        print("AAAAAAA")
         if path.split('/')[1] == 'files':
             filename = path.split('/')[2]
             dir = sys.argv[-1]
@@ -46,7 +45,8 @@ def handle_request(conn):
             with open(filePath, 'w') as f:
                 f.write(content)
                 conn.send(HTTP_201.encode())
-
+        else:
+            print("AAAAAAA")
 def main():
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
 
