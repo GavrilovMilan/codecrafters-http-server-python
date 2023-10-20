@@ -45,8 +45,11 @@ def handle_request(conn):
             with open(filePath, 'w') as f:
                 f.write(content)
                 conn.send(HTTP_201.encode())
+            conn.close()
         else:
             conn.send(HTTP_404.encode())
+            conn.close()
+
 def main():
     server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
 
